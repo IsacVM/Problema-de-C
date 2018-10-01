@@ -6,42 +6,67 @@
 char nombre[30];
 char apP [30];
 char apM [30];
-char fechnac [7];
+char dia[3];
+char mes[3];
+char anio[5];
 char RFC[50];
-char RFC1[3];
-char RFC2[3];
-char RFC3[3];
-
+char RFC1[10];
+char RFC2[10];
+char apP1[2];
+int i;
 
 main(){
 	
-	printf("Problema 22: Nombre completo con cadena de caracteres\n");
+	printf("\tProblema: RFC\n");
 	
 	printf("Apellido Paterno: ");
 	gets(apP);
-	strncpy(RFC1,apP,2);
+	strncpy(RFC,apP,1);
+	strupr(apP);
+	
+		for(i=strlen(apP);i>=1;i--){
+					
+			if((apP[i]=='A')||(apP[i]=='E')||(apP[i]=='I')||(apP[i]=='O')||(apP[i]=='U'))
+			{
+			
+				apP1[0]=apP[i];
+			
+			}
+		}
+		
 	printf("Apellido Materno: ");
-	gets(apM);
-	strncpy(RFC2,apM,1);
+	gets(apM);	
+	
 	printf("Nombre: ");
 	gets(nombre);
-	strncpy(RFC3,nombre,1);
-	printf("Fecha de nacimiento(aa/mm/dd): ");	
-	gets(fechnac);
-
+	
+	printf("Fecha de nacimiento\n");
+	
+	printf("Dia: ");	
+	gets(dia);
+	
+	printf("Mes: ");	
+	gets(mes);
+	
+	printf("A%co: ",164);	
+	gets(anio);
+		
 	strcat(apP," ");
 	strcat(apP,apM);
 	strcat(apP," ");
 	strcat(apP,nombre);
 	
+	strcat(RFC,apP1);
+	strncpy(RFC1,apM,1);
 	strcat(RFC,RFC1);
+	strncpy(RFC2,nombre,1);
 	strcat(RFC,RFC2);
-	strcat(RFC,RFC3);
-	strcat(RFC,fechnac);
+	strcat(RFC,anio);
+	strcat(RFC,mes);
+	strcat(RFC,dia);
 	
-
 	printf("Nombre completo: %s \n",strupr(apP));
-	printf("Tu RFC es: %s",strupr(RFC));
+	printf("Tu RFC parcial es: %s",strupr(RFC));
 	
 	getch();
 	return 0;
